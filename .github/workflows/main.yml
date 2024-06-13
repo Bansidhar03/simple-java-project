@@ -1,0 +1,24 @@
+name: build and upload artifact
+
+on: 
+ pull_request:
+  branches: [main]
+push:
+branches: [main]
+
+jobs:
+ build: 
+  runs-on: ubuntu-latest
+  steps:
+   - name: Checkout
+     uses: actions/checkout@v4.1.7
+   - name: Setup Java JDK
+     uses: actions/setup-java@v4.2.1
+   - name: Prepare for Build with Apache Maven
+     uses: sualeh/prepare-maven-build@v1.4.0
+   - name: Upload a Build Artifact
+     uses: ctions/upload-artifact@v4.3.3
+     with:
+      warn: Output a warning but do not fail the action
+      error: Fail the action with an error message
+      ignore: Do not output any warnings or errors, the actio
